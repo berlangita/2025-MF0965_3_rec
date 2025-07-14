@@ -1,19 +1,23 @@
 class Producto:
     def __init__(self, codigo, nombre, precio):
+        self.codigo = codigo
+        self.nombre = nombre
+        self.precio = precio
         """
         COMPLETAR 1:
         Asigna los parámetros a los atributos
         """
-        pass
+        
 
     def __str__(self):
+        return f"[{self.codigo}] {self.nombre} - Precio: {self.precio:.2f} €"
         """
         COMPLETAR 2:
         Devuelve un string con el formato especificado, usando f-string.
         Asegúrate de que el precio se muestre con 2 decimales.
         Ejemplo de formato: "[PROD001] Teclado Mecánico - Precio: 75.50 €
         """
-        pass
+        
 
 
 def buscar_producto(inventario, codigo_buscar):
@@ -22,7 +26,10 @@ def buscar_producto(inventario, codigo_buscar):
     Busca en 'inventario' un producto cuyo código coincida con 'codigo_buscar'.
     Si lo encuentra, devuelve dicho objeto; si no, devuelve None.
     """
-    pass
+    for producto in inventario:
+        if producto.codigo == codigo_buscar:
+            return producto
+    return producto
 
 
 def mostrar_inventario(inventario):
@@ -34,7 +41,8 @@ def mostrar_inventario(inventario):
     if not inventario:
         print("El inventario está vacío.")
     else:
-        pass
+        for producto in inventario:
+            print(producto)
 
 
 def calcular_valor_total(inventario):
@@ -43,7 +51,8 @@ def calcular_valor_total(inventario):
     Calcula y devuelve la suma de los precios de todos los productos en el inventario.
     """
     total = 0.0
-
+    for producto in inventario:
+        total += producto.precio
     return total
 
 
@@ -74,6 +83,10 @@ def main():
             Si se encontró, imprime ">> Producto encontrado:" y luego el producto.
                      Si no, imprime ">> No se encontró ningún producto con ese código."
             """
+            if producto_encontrado:
+                print(f">> Producto encontrado: {producto_encontrado}")
+            else:
+                print(">> No se encontró ningún producto con ese código.")      
 
         elif opcion == '3':
             valor_total = calcular_valor_total(inventario)
