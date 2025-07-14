@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 class Producto:
     def __init__(self, codigo, nombre, precio):
         self.codigo = codigo
@@ -17,8 +18,34 @@ class Producto:
         Asegúrate de que el precio se muestre con 2 decimales.
         Ejemplo de formato: "[PROD001] Teclado Mecánico - Precio: 75.50 €
         """
+     @property
+    def __init__(self):
         
+        return self.precio,self.nombre
 
+    @precio.setter
+    def precio(self, nuevo_valor):
+        self._mi_atributo = nuevo_valor
+       @precio.setter
+    
+    def nombre(self, nuevo_valor):
+        self.nombre = nuevo_valor
+
+
+class Iteminventario(ABC):
+    @abstractmethod
+    def detalles(self):
+        pass
+
+class Productofisico (Iteminventario):
+    pass
+
+class Productodigital(Iteminventario):
+    pass
+
+class producto especial(Productofisico):
+    @abstractmethod
+    def promocionable(aplicardescuento):
 
 def buscar_producto(inventario, codigo_buscar):
     """
